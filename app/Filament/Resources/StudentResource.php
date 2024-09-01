@@ -2,13 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Enums\Subject;
-use App\Filament\Actions\UpdateHourlyRatesAction;
-use App\Filament\Resources\TutorResource\Pages;
-use App\Models\Tutor;
-use Filament\Forms\Components\FileUpload;
-use Filament\Forms\Components\TagsInput;
-use Filament\Forms\Components\Textarea;
+use App\Filament\Resources\StudentResource\Pages;
+use App\Models\Student;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -16,14 +12,12 @@ use Filament\Tables\Actions\BulkActionGroup;
 use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\EditAction;
-use Filament\Tables\Actions\ViewAction;
-use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
-class TutorResource extends Resource
+class StudentResource extends Resource
 {
-    protected static ?string $model = Tutor::class;
+    protected static ?string $model = Student::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -31,15 +25,6 @@ class TutorResource extends Resource
     {
         return $form
             ->schema([
-                FileUpload::make('avatar')
-                    ->image()
-                    ->avatar()
-                    ->maxSize(2048)
-                    ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/gif'])
-                    ->disk('public')
-                    ->directory('avatars')
-                    ->visibility('public')->columnSpanFull(),
-
                 TextInput::make('name')
                     ->required()
                     ->maxLength(255),
@@ -48,21 +33,12 @@ class TutorResource extends Resource
                     ->required()
                     ->unique(ignoreRecord: true)
                     ->maxLength(255),
-                TextInput::make('hourly_rate')
-                    ->minValue(0)
+                Select::make('grade_level')
                     ->required()
-                    ->numeric(),
-                TagsInput::make('subjects')
-                    ->separator(',')
-                    ->nestedRecursiveRules([
-                        'min:1',
-                    ])
-                    ->required()
-                    ->suggestions(Subject::toArray()),
-                Textarea::make('bio')
-                    ->maxLength(1000)
-                    ->columnSpanFull(),
-
+                    ->options(range(1, 12)),
+                Select::make('tutors')
+                    ->relationship('tutors', 'name')
+                    ->multiple(),
             ]);
     }
 
@@ -70,19 +46,14 @@ class TutorResource extends Resource
     {
         return $table
             ->columns([
-                ImageColumn::make('avatar')
-                    ->label('Avatar')
-                    ->size(50)
-                    ->columnSpan(1)
-                    ->circular(),
                 TextColumn::make('name')
                     ->searchable(),
                 TextColumn::make('email')
                     ->searchable(),
-                TextColumn::make('hourly_rate')
+                TextColumn::make('grade_level')
                     ->numeric()
                     ->sortable(),
-                TextColumn::make('subjects')
+                TextColumn::make('tutors.name')
                     ->searchable(),
                 TextColumn::make('created_at')
                     ->dateTime()
@@ -103,14 +74,11 @@ class TutorResource extends Resource
             ->actions([
                 EditAction::make(),
                 DeleteAction::make(),
-                ViewAction::make(),
-
             ])
             ->bulkActions([
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
                 ]),
-                UpdateHourlyRatesAction::make('updateHourlyRates'),
             ]);
     }
 
@@ -124,9 +92,9 @@ class TutorResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListTutors::route('/'),
-            'create' => Pages\CreateTutor::route('/create'),
-            'edit' => Pages\EditTutor::route('/{record}/edit'),
+            'index' => Pages\ListStudents::route('/'),
+            'create' => Pages\CreateStudent::route('/create'),
+            'edit' => Pages\EditStudent::route('/{record}/edit'),
         ];
     }
 }

@@ -1,21 +1,21 @@
 <?php
 
-namespace App\Filament\Resources\TutorResource\Pages;
+namespace App\Filament\Resources\StudentResource\Pages;
 
-use App\Filament\Resources\TutorResource;
+use App\Filament\Resources\StudentResource;
 use Filament\Actions;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\EditRecord;
 
-class EditTutor extends EditRecord
+class EditStudent extends EditRecord
 {
-    protected static string $resource = TutorResource::class;
+    protected static string $resource = StudentResource::class;
 
     protected function getSavedNotification(): ?Notification
     {
         return Notification::make()
-            ->title('Tutor Updated')
-            ->body('The tutor record has been successfully updated.')
+            ->title('Student Updated')
+            ->body('The student record has been successfully updated.')
             ->success();
     }
 
