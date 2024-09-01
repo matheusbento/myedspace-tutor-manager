@@ -8,29 +8,36 @@ use Livewire\Component;
 
 class TutorSearch extends Component
 {
-    public string $live_search = '';
+    public string $liveSearch = '';
     public array $subjects = [];
     public array $searchSubjects = [];
 
-    public int $min = 0;
-    public int $max = 0;
+    public ?int $minHourlySearch = null;
+    public ?int $maxHourlySearch = null;
+
+    public ?int $minHourly = null;
+    public ?int $maxHourly = null;
 
     public function mount(): void
     {
         $this->subjects = Subject::toArray();
-        $this->min = Tutor::min('hourly_rate');
-        $this->max = Tutor::max('hourly_rate');
+
+        $this->minHourly = Tutor::min('hourly_rate');
+        $this->maxHourly = Tutor::max('hourly_rate');
+
+        $this->minHourlySearch = $this->minHourlySearch ?? $this->minHourly;
+        $this->maxHourlySearch = $this->maxHourlySearch ?? $this->maxHourly;
     }
 
     public function render()
     {
         $builder = Tutor::query();
 
-        if ($this->live_search) {
-            if (is_numeric($this->live_search)) {
-                $builder->where('hourly_rate', $this->live_search);
+        if ($this->liveSearch) {
+            if (is_numeric($this->liveSearch)) {
+                $builder->where('hourly_rate', $this->liveSearch);
             } else {
-                $subjects = explode(',', $this->live_search);
+                $subjects = explode(',', $this->liveSearch);
 
                 $builder->where(function ($query) use ($subjects) {
                     foreach ($subjects as $subject) {
@@ -46,7 +53,7 @@ class TutorSearch extends Component
             }
         }
 
-        $tutors = $builder->whereBetween('hourly_rate', [$this->min, $this->max])->get();
+        $tutors = $builder->whereBetween('hourly_rate', [$this->minHourlySearch, $this->maxHourlySearch])->get();
 
         return view('livewire.tutors.search.tutors-search', [
             'tutors' => $tutors,

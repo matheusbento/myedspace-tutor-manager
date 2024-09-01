@@ -53,7 +53,6 @@ class TutorResource extends Resource
                     ->required()
                     ->numeric(),
                 TagsInput::make('subjects')
-                    ->separator(',')
                     ->nestedRecursiveRules([
                         'min:1',
                     ])

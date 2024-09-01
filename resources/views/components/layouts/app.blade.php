@@ -27,8 +27,8 @@
 </main>
 
 <footer>
-    <div class="container mx-auto py-4 text-left text-gray-500">
-       <div class="float-left">
+    <div class="container mx-auto py-4 text-center text-gray-500">
+       <div class="float-center">
             <h3> Copyright © Myedspace Limited {{ now()->year }}.</h3>
             <p>
        </div>
