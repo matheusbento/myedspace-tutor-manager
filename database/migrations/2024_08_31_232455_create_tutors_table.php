@@ -20,6 +20,7 @@ return new class extends Migration
             $table->text('bio');
             $table->json('subjects');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

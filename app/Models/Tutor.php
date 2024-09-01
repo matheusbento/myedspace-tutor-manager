@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Tutor extends Model
 {
     use HasFactory;
+    use SoftDeletes;
 
     protected $fillable = [
         'avatar',
@@ -16,6 +18,10 @@ class Tutor extends Model
         'hourly_rate',
         'bio',
         'subjects',
+    ];
+
+    protected $casts = [
+        'subjects' => 'array',
     ];
 
     public function students()
