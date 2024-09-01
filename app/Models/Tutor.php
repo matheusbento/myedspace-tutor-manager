@@ -28,4 +28,9 @@ class Tutor extends Model
     {
         return $this->hasMany(Student::class);
     }
+
+    public function rateChanges()
+    {
+        return $this->hasMany(TutorRateChange::class);
+    }
 }

@@ -11,16 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tutors', function (Blueprint $table) {
+        Schema::create('tutor_rate_changes', function (Blueprint $table) {
             $table->id();
-            $table->string('avatar')->nullable();
-            $table->string('name', 255);
-            $table->string('email')->unique();
-            $table->decimal('hourly_rate', 8, 2);
-            $table->text('bio')->nullable();
-            $table->json('subjects');
+            $table->foreignId('tutor_id')->constrained();
+            $table->decimal('old_hourly_rate', 8, 2);
+            $table->decimal('new_hourly_rate', 8, 2);
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -29,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tutors');
+        Schema::dropIfExists('tutor_rate_changes');
     }
 };
