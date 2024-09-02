@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Actions;
+namespace App\Filament\Resources\TutorResource\Actions;
 
 use App\Facades\TutorService;
 use Filament\Forms\Components\TextInput;

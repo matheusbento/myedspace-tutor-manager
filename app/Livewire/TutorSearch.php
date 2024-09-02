@@ -9,13 +9,17 @@ use Livewire\Component;
 class TutorSearch extends Component
 {
     public string $liveSearch = '';
+
     public array $subjects = [];
+
     public array $searchSubjects = [];
 
     public ?int $minHourlySearch = null;
+
     public ?int $maxHourlySearch = null;
 
     public ?int $minHourly = null;
+
     public ?int $maxHourly = null;
 
     public function mount(): void

@@ -1,0 +1,33 @@
+:root {
+    --primary-color: rgb(87 81 210 / 1); /* Example primary color */
+    --secondary-color: #6c757d; /* Example secondary color */
+    --background-color: #f8f9fa; /* Example background color */
+    --text-color: #212529; /* Example text color */
+}
+
+.fi-app {
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.fi-header {
+    background-color: var(--primary-color);
+}
+
+.fi-sidebar {
+    background-color: var(--secondary-color);
+}
+
+.fi-button {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.accent-primary {
+    accent-color: var(--primary-color);
+}
+
+.bg-primary {
+    background-color: var(--primary-color);
+}
+/* Additional custom styles */

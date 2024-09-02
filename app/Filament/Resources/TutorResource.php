@@ -3,7 +3,7 @@
 namespace App\Filament\Resources;
 
 use App\Enums\Subject;
-use App\Filament\Actions\UpdateHourlyRatesAction;
+use App\Filament\Resources\TutorResource\Actions\UpdateHourlyRatesAction;
 use App\Filament\Resources\TutorResource\Pages;
 use App\Models\Tutor;
 use Filament\Forms\Components\FileUpload;
