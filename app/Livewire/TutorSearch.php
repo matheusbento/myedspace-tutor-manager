@@ -12,7 +12,7 @@ class TutorSearch extends Component
 
     public array $subjects = [];
 
-    public array $searchSubjects = [];
+    public array $subjectsSearch = [];
 
     public ?int $minHourlySearch = null;
 
@@ -51,8 +51,8 @@ class TutorSearch extends Component
             }
         }
 
-        if ($this->searchSubjects) {
-            foreach ($this->searchSubjects as $subject) {
+        if ($this->subjectsSearch) {
+            foreach ($this->subjectsSearch as $subject) {
                 $builder->orWhereJsonContains('subjects', $subject);
             }
         }

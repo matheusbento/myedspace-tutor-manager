@@ -21,7 +21,7 @@
 
             <div>
                 <label class="block mb-2 font-bold">Subjects</label>
-                <select wire:model="searchSubjects" multiple
+                <select wire:model="subjectsSearch" multiple
                     class="w-full px-4 py-2 border rounded-lg focus:outline-none">
                     @foreach ($subjects as $subject)
                         <option value="{{ $subject }}">{{ $subject }}</option>

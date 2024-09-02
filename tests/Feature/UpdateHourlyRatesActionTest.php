@@ -10,15 +10,13 @@ class UpdateHourlyRatesActionTest extends MyEdSpaceTestCase
 {
     public function testUserBulkUpdateHourlyRates()
     {
-        TutorService::spy();
-
         $tutors = Tutor::factory()->count(5)->create([
             'hourly_rate' => 100,
         ]);
 
         $increasePercent = 20;
 
-        TutorService::updateHourlyRates($tutors, $increasePercent);
+        TutorService::bulkUpdateRates($tutors, $increasePercent);
 
         $tutors->each(function ($tutor) use ($increasePercent) {
             $this->assertEquals($tutor->hourly_rate, 100 + 100 * $increasePercent / 100);

@@ -12,9 +12,9 @@
 <body>
 <header>
 
-    <nav class="bg-gray-100 p-4">
-        <div class="container mx-auto flex justify-between items-center">
-            <a href="{{ route('tutors') }}" class="text-white">
+    <nav class="p-4 bg-gray-100">
+        <div class="container flex items-center justify-between mx-auto">
+            <a href="{{ route('tutors.index') }}" class="text-white">
                 <img src="{{ asset('images/myedspace-logo.svg') }}" alt="Logo" class="h-10 m-5">
             </a>
         </div>
@@ -27,7 +27,7 @@
 </main>
 
 <footer>
-    <div class="container mx-auto py-4 text-center text-gray-500">
+    <div class="container py-4 mx-auto text-center text-gray-500">
        <div class="float-center">
             <h3> Copyright © Myedspace Limited {{ now()->year }}.</h3>
             <p>
