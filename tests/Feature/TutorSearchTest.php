@@ -3,12 +3,10 @@
 namespace Tests\Feature;
 
 use App\Models\Tutor;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Livewire\Livewire;
-use Tests\TestCase;
+use Tests\MyEdSpaceTestCase;
 
-class TutorSearchTest extends TestCase
+class TutorSearchTest extends MyEdSpaceTestCase
 {
     public function testUserCanSearchForTutorRateUsingFreeText(): void
     {

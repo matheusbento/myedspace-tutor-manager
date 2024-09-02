@@ -44,13 +44,17 @@ class HighestPaidSubject extends BaseWidget
             ->sortByDesc('avg_hourly_rate')
             ->first();
 
-        $subjectLabel = Subject::tryFrom($highestPaidSubject['subject'])?->getLabel() ?? null;
+        if ($highestPaidSubject) {
+            $subjectLabel = Subject::tryFrom($highestPaidSubject['subject'])?->getLabel() ?? null;
+        } else {
+            $subjectLabel = 'N/A';
+        }
 
         return [
 
             Stat::make('Highest Paid Subject', 'subject')
                 ->icon('heroicon-s-currency-dollar')
-                ->value($subjectLabel.' - $'.number_format($highestPaidSubject['avg_hourly_rate'], 2)
+                ->value($subjectLabel.' - $'.number_format($highestPaidSubject['avg_hourly_rate'] ?? 0, 2)
                 ),
         ];
     }

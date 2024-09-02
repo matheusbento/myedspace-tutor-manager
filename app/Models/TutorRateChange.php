@@ -13,9 +13,4 @@ class TutorRateChange extends Model
         'old_hourly_rate',
         'new_hourly_rate',
     ];
-
-    public function tutor()
-    {
-        return $this->belongsTo(Tutor::class);
-    }
 }

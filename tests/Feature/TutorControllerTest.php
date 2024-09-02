@@ -3,11 +3,9 @@
 namespace Tests\Feature;
 
 use App\Models\Tutor;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Tests\TestCase;
+use Tests\MyEdSpaceTestCase;
 
-class TutorControllerTest extends TestCase
+class TutorControllerTest extends MyEdSpaceTestCase
 {
     /**
      * A basic feature test example.
