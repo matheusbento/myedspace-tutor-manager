@@ -18,7 +18,7 @@ class TutorFactory extends Factory
     public function definition(): array
     {
         return [
-            'avatar' => $this->faker->image('storage/app/public', 200, 200, null, false),
+            'avatar' => $this->faker->image('storage/app/public', 50, 50, null, false, false, 'myedspace', true),
             'name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
             'hourly_rate' => $this->faker->randomFloat(2, 10, 100),

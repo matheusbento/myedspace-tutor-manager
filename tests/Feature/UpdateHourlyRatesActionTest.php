@@ -10,7 +10,7 @@ class UpdateHourlyRatesActionTest extends MyEdSpaceTestCase
 {
     public function testUserBulkUpdateHourlyRates()
     {
-        $tutors = Tutor::factory()->count(5)->create([
+        $tutors = Tutor::factory()->count(2)->create([
             'hourly_rate' => 100,
         ]);
 

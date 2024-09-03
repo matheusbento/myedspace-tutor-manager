@@ -10,7 +10,7 @@ class TutorSearchTest extends MyEdSpaceTestCase
 {
     public function testUserCanSearchForTutorRateUsingFreeText(): void
     {
-        Tutor::factory()->count(5)->create([
+        Tutor::factory()->count(2)->create([
             'hourly_rate' => 50,
         ]);
 
@@ -24,7 +24,7 @@ class TutorSearchTest extends MyEdSpaceTestCase
 
     public function testUserCanSearchForTutorSubjectUsingFreeText(): void
     {
-        Tutor::factory()->count(5)->create();
+        Tutor::factory()->count(2)->create();
 
         Tutor::factory()->create(['subjects' => ['math']]);
 
@@ -36,7 +36,7 @@ class TutorSearchTest extends MyEdSpaceTestCase
 
     public function testUserCanSearchForTutorUsingHourlyRateRange(): void
     {
-        Tutor::factory()->count(5)->create([
+        Tutor::factory()->count(2)->create([
             'hourly_rate' => 40,
         ]);
 
@@ -51,7 +51,7 @@ class TutorSearchTest extends MyEdSpaceTestCase
 
     public function testUserCanSearchForTutorSubjectUsingTheSubjectsFilter(): void
     {
-        Tutor::factory()->count(5)->create();
+        Tutor::factory()->count(2)->create();
 
         Tutor::factory()->create(['subjects' => ['math']]);
 

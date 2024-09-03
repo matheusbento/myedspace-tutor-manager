@@ -14,7 +14,7 @@ class DashboardTest extends MyEdSpaceTestCase
         parent::setUp();
 
         Student::factory()
-            ->count(10)
+            ->count(2)
             ->has(Tutor::factory(2, [
                 'hourly_rate' => 10,
             ]), 'tutors')

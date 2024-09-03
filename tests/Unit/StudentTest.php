@@ -31,7 +31,7 @@ class StudentTest extends MyEdSpaceTestCase
         $this->assertDatabaseMissing('students', $student->toArray());
     }
 
-    public function testeAssignTutorToStudent()
+    public function testCanAssignTutorToStudent()
     {
         $student = Student::factory()->has(
             Tutor::factory(), 'tutors'

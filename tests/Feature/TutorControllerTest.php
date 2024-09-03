@@ -12,7 +12,7 @@ class TutorControllerTest extends MyEdSpaceTestCase
      */
     public function testGuestGetIndex(): void
     {
-        Tutor::factory()->count(5)->create();
+        Tutor::factory()->create();
         $response = $this->get(route('tutors.index'));
 
         $response->assertStatus(200)->assertViewIs('tutors');
